@@ -2328,9 +2328,9 @@ void QuadPlane::vtol_position_controller(void)
 
     case QPOS_LAND_FINAL:
         pos_control->set_alt_target_from_climb_rate(-land_speed_cms, plane.G_Dt, true);
-		if ((options & OPTION_DISABLE_GROUND_EFFECT_COMP) == 0) {
-			ahrs.setTouchdownExpected(true);
-		}
+	    if ((options & OPTION_DISABLE_GROUND_EFFECT_COMP) == 0) {
+            ahrs.setTouchdownExpected(true);
+        }
         break;
         
     case QPOS_LAND_COMPLETE:
@@ -2619,10 +2619,10 @@ bool QuadPlane::verify_vtol_takeoff(const AP_Mission::Mission_Command &cmd)
     }
 	
 	// let the ahrs know that ground effect is expected
-	if (now - takeoff_start_time_ms < 3000 &&
-		(options & OPTION_DISABLE_GROUND_EFFECT_COMP) == 0) {
-		ahrs.setTakeoffExpected(true);
-		}
+    if (now - takeoff_start_time_ms < 3000 &&
+        (options & OPTION_DISABLE_GROUND_EFFECT_COMP) == 0) {
+        ahrs.setTakeoffExpected(true);
+        }
 
     // check for failure conditions
     if (is_positive(takeoff_failure_scalar) && ((now - takeoff_start_time_ms) > takeoff_time_limit_ms)) {
@@ -3046,9 +3046,9 @@ bool QuadPlane::do_user_takeoff(float takeoff_altitude)
     motors->set_desired_spool_state(AP_Motors::DesiredSpoolState::THROTTLE_UNLIMITED);
     guided_start();
     guided_takeoff = true;
-	if ((options & OPTION_DISABLE_GROUND_EFFECT_COMP) == 0) {
-		ahrs.setTakeoffExpected(true);
-	}
+    if ((options & OPTION_DISABLE_GROUND_EFFECT_COMP) == 0) {
+        ahrs.setTakeoffExpected(true);
+    }
     return true;
 }
 
